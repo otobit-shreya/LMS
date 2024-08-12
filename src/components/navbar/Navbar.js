@@ -8,7 +8,7 @@ const NavigationBar = () => {
   return (
     <Navbar expand="lg" className="bg-[#DD6A70]">
     <Container fluid>
-      <Navbar.Brand href="#" className='text-white font-bold text-2xl tracking-wider'>LEARNER</Navbar.Brand>
+      <Navbar.Brand href="/" className='text-white font-bold text-2xl tracking-wider'>LEARNER</Navbar.Brand>
       <Navbar.Toggle aria-controls="navbarScroll" />
       <Navbar.Collapse id="navbarScroll">
         <Nav
@@ -16,7 +16,7 @@ const NavigationBar = () => {
           style={{ maxHeight: '100px' }}
           navbarScroll
         >
-          <Nav.Link href="#action1" className='text-white font-bold'>Home</Nav.Link>
+          <Nav.Link href="/news" className='text-white font-bold'>Home</Nav.Link>
           {/* <NavDropdown title="Link" id="navbarScrollingDropdown">
             <NavDropdown.Item href="#action3">Action</NavDropdown.Item>
             <NavDropdown.Item href="#action4">
