@@ -46,7 +46,7 @@ const Home = () => {
             </div>
           </div>
         </Modal.Body>
-      </Modal>
+      </Modal >
       <div className="row m-0">
         <div className="col-lg-4 col-md-4 bg-gray-100 shadow-md border-r-2 border-gray-200 h-screen">
           <h2 style={{ fontFamily: "auto" }} className="mt-20 mb-4">
