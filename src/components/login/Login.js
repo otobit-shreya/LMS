@@ -38,7 +38,7 @@ const Login = () => {
         formData.email === storedCredentials.email &&
         formData.password === storedCredentials.password
       ) {
-        navigate("/home");
+        navigate("/news");
       } else {
         alert("Invalid email or password");
       }
