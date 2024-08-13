@@ -89,15 +89,12 @@ const NewsFeed = () => {
               isDialogOpen ? "gap-x-7 pb-4" : "gap-x-12 pb-5"
             } items-center justify-center px-4`}
           >
-            <button
-              className={`flex items-center ${
-                isDialogOpen ? "flex-initial" : "flex-auto"
-              } leading-10 px-2 w-fit gap-x-2 text-base font-["Poppins"] text-center`}
-            >
+            <input id='image' type='file' accept='image/*' className='hidden' />
+            <label htmlFor='image' className='flex items-center gap-x-2 cursor-pointer text-base font-["Poppins"] text-center'>
               <i className="bi bi-image"></i>
 
               <span>upload image</span>
-            </button>
+            </label>
             <button
               className={`flex items-center ${
                 isDialogOpen ? "flex-initial" : "flex-auto"
@@ -158,10 +155,12 @@ const NewsFeed = () => {
                   <i className="bi bi-heart"></i>
                   <span>feelings</span>
                 </button>
-                <button className='flex items-center leading-10 gap-x-2 text-base font-["Poppins"] text-center'>
+
+                <input id='files' type='file' accept='*/*' className='hidden' />
+                <label htmlFor="files" className='flex items-center leading-10 gap-x-2 cursor-pointer text-base font-["Poppins"] text-center'>
                   <i className="bi bi-cloud-arrow-up"></i>
                   <span>upload files</span>
-                </button>
+                </label>
                 <button
                   className='flex items-center leading-10 gap-x-2 text-base font-["Poppins"] text-center'
                   onClick={() => navigate("/home")}
@@ -171,22 +170,27 @@ const NewsFeed = () => {
                 </button>
               </div>
               <div className="flex pb-4 gap-x-10 items-center justify-center px-4">
-                <button className='flex items-center leading-10 gap-x-2 text-base font-["Poppins"] text-center'>
+                <input id='audio' type='file' accept='audio/*' className='hidden' />
+                <label htmlFor="audio" className='flex items-center leading-10 gap-x-2 cursor-pointer text-base font-["Poppins"] text-center'>
                   <i className="bi bi-music-note-beamed"></i>
                   <span>audio upload</span>
-                </button>
+                </label>
                 <button className='flex items-center leading-10 gap-x-2 text-base font-["Poppins"] text-center'>
                   <i className="bi bi-card-checklist"></i>
                   <span>create poll</span>
                 </button>
-                <button className='flex items-center leading-10 gap-x-2 text-base font-["Poppins"] text-center'>
+
+                <input id='reel' type='file' accept='*/*' className='hidden' />
+                <label htmlFor="reel" className='flex items-center leading-10 gap-x-2 cursor-pointer text-base font-["Poppins"] text-center'>
                   <i className="bi bi-file-play"></i>
                   <span>upload reels</span>
-                </button>
-                <button className='flex items-center leading-10 gap-x-2 text-base font-["Poppins"] text-center'>
+                </label>
+
+                <input id='video' type='file' accept='video/*' className='hidden' />
+                <label htmlFor="video" className='flex items-center leading-10 gap-x-2 cursor-pointer text-base font-["Poppins"] text-center'>
                   <i className="bi bi-play"></i>
                   <span>upload video</span>
-                </button>
+                </label>
               </div>
               <footer>
                 <div className="flex justify-end">
