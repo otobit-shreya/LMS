@@ -7,19 +7,42 @@ import EmojiPicker from "emoji-picker-react";
 const NewsFeed = () => {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [inputValue, setInputValue] = useState("");
+  const [messages, setMessages] = useState([]);
   const [emoji, setEmoji] = useState(false);
+  const [likedMessages, setLikedMessages] = useState({});
   const navigate = useNavigate();
-  const emojiPickerRef = useRef(null); 
+  const emojiPickerRef = useRef(null);
 
   const handleEmojiClick = (event) => {
     setInputValue((prev) => prev + event.emoji);
     setIsDialogOpen(true);
+  };
 
+  const handleShareClick = () => {
+    if (inputValue.trim()) {
+      setMessages([...messages, inputValue]);
+      setInputValue("");
+      setIsDialogOpen(false);
+    }
+  };
+
+  const deletePost = (index) => {
+    setMessages((prevMessages) => prevMessages.filter((_, i) => i !== index));
+  };
+
+  const toggleLike = (index) => {
+    setLikedMessages((prevLikes) => ({
+      ...prevLikes,
+      [index]: !prevLikes[index],
+    }));
   };
 
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (emojiPickerRef.current && !emojiPickerRef.current.contains(event.target)) {
+      if (
+        emojiPickerRef.current &&
+        !emojiPickerRef.current.contains(event.target)
+      ) {
         setEmoji(false);
         setIsDialogOpen(false);
       }
@@ -32,7 +55,7 @@ const NewsFeed = () => {
   }, []);
 
   return (
-    <div className="bg-gray-100 w-full flex justify-center mt-10 h-screen">
+    <div className="bg-gray-100 w-full flex justify-center mt-10 min-h-screen">
       <NavigationBar />
       {isDialogOpen && (
         <div
@@ -57,9 +80,7 @@ const NewsFeed = () => {
                 className={`p-2 pr-12 ${
                   isDialogOpen ? "h-20" : "h-10"
                 } bg-gray-100 border-none`}
-                style={{
-                  backgroundColor: "#F5F5F5",
-                }}
+                style={{ backgroundColor: "#F5F5F5" }}
                 type="text"
                 placeholder="What's going on? #Hashtag.. @Mention.."
                 size="sm"
@@ -67,21 +88,26 @@ const NewsFeed = () => {
                 onChange={(e) => setInputValue(e.target.value)}
                 onClick={() => setIsDialogOpen(true)}
               />
+
               {isDialogOpen && (
                 <i
                   className="bi bi-emoji-smile absolute right-3 top-1/2 transform -translate-y-1/2 text-xl cursor-pointer text-gray-600"
                   onClick={() => setEmoji(true)}
                 ></i>
               )}
-              
-                {emoji && (<div  ref={emojiPickerRef}  className="absolute right-0 top-full mt-2 z-10">
+
+              {emoji && (
+                <div
+                  ref={emojiPickerRef}
+                  className="absolute right-0 top-full mt-2 z-10"
+                >
                   <EmojiPicker
                     skinTonesDisabled
                     searchDisabled
                     onEmojiClick={handleEmojiClick}
                   />
-                </div>)}
-
+                </div>
+              )}
             </div>
           </div>
           <div
@@ -89,8 +115,11 @@ const NewsFeed = () => {
               isDialogOpen ? "gap-x-7 pb-4" : "gap-x-12 pb-5"
             } items-center justify-center px-4`}
           >
-            <input id='image' type='file' accept='image/*' className='hidden' />
-            <label htmlFor='image' className='flex items-center gap-x-2 cursor-pointer text-base font-["Poppins"] text-center'>
+            <input id="image" type="file" accept="image/*" className="hidden" />
+            <label
+              htmlFor="image"
+              className='flex items-center gap-x-2 cursor-pointer text-base font-["Poppins"] text-center'
+            >
               <i className="bi bi-image"></i>
 
               <span>upload image</span>
@@ -156,8 +185,11 @@ const NewsFeed = () => {
                   <span>feelings</span>
                 </button>
 
-                <input id='files' type='file' accept='*/*' className='hidden' />
-                <label htmlFor="files" className='flex items-center leading-10 gap-x-2 cursor-pointer text-base font-["Poppins"] text-center'>
+                <input id="files" type="file" accept="*/*" className="hidden" />
+                <label
+                  htmlFor="files"
+                  className='flex items-center leading-10 gap-x-2 cursor-pointer text-base font-["Poppins"] text-center'
+                >
                   <i className="bi bi-cloud-arrow-up"></i>
                   <span>upload files</span>
                 </label>
@@ -170,8 +202,16 @@ const NewsFeed = () => {
                 </button>
               </div>
               <div className="flex pb-4 gap-x-10 items-center justify-center px-4">
-                <input id='audio' type='file' accept='audio/*' className='hidden' />
-                <label htmlFor="audio" className='flex items-center leading-10 gap-x-2 cursor-pointer text-base font-["Poppins"] text-center'>
+                <input
+                  id="audio"
+                  type="file"
+                  accept="audio/*"
+                  className="hidden"
+                />
+                <label
+                  htmlFor="audio"
+                  className='flex items-center leading-10 gap-x-2 cursor-pointer text-base font-["Poppins"] text-center'
+                >
                   <i className="bi bi-music-note-beamed"></i>
                   <span>audio upload</span>
                 </label>
@@ -180,21 +220,35 @@ const NewsFeed = () => {
                   <span>create poll</span>
                 </button>
 
-                <input id='reel' type='file' accept='*/*' className='hidden' />
-                <label htmlFor="reel" className='flex items-center leading-10 gap-x-2 cursor-pointer text-base font-["Poppins"] text-center'>
+                <input id="reel" type="file" accept="*/*" className="hidden" />
+                <label
+                  htmlFor="reel"
+                  className='flex items-center leading-10 gap-x-2 cursor-pointer text-base font-["Poppins"] text-center'
+                >
                   <i className="bi bi-file-play"></i>
                   <span>upload reels</span>
                 </label>
 
-                <input id='video' type='file' accept='video/*' className='hidden' />
-                <label htmlFor="video" className='flex items-center leading-10 gap-x-2 cursor-pointer text-base font-["Poppins"] text-center'>
+                <input
+                  id="video"
+                  type="file"
+                  accept="video/*"
+                  className="hidden"
+                />
+                <label
+                  htmlFor="video"
+                  className='flex items-center leading-10 gap-x-2 cursor-pointer text-base font-["Poppins"] text-center'
+                >
                   <i className="bi bi-play"></i>
                   <span>upload video</span>
                 </label>
               </div>
               <footer>
                 <div className="flex justify-end">
-                  <button className="bg-[#DD6A70] rounded-md  mb-4 mr-6 text-white font-bold w-[100px] h-[40px]">
+                  <button
+                    className="bg-[#DD6A70] rounded-md mb-4 mr-6 text-white font-bold w-[100px] h-[40px]"
+                    onClick={handleShareClick}
+                  >
                     Share
                   </button>
                 </div>
@@ -202,6 +256,39 @@ const NewsFeed = () => {
             </>
           )}
         </div>
+        {messages.map((message, index) => (
+          <div
+            key={index}
+            className="rounded-2xl bg-white my-5 w-[756px] mx-auto"
+          >
+            <div className="flex items-center px-5 py-4 gap-x-5">
+              <Image
+                className="size-12 rounded-md"
+                src="https://bit.ly/dan-abramov"
+                alt="User"
+              />
+              <div className='font-["Poppins"]'>Admin</div>
+              <div className="ml-auto flex items-center gap-x-2">
+                
+                <i
+                  className="bi bi-trash3 hover:text-red-500 cursor-pointer"
+                  onClick={() => deletePost(index)}
+                ></i>
+              </div>
+            </div>
+            <p className='px-5  font-["Poppins"]'>{message}</p>
+            <div className="px-5 pb-4">
+            <i
+                  className={`bi  ${
+                    likedMessages[index]
+                      ? "bi-heart-fill text-red-500"
+                      : "bi-heart"
+                  } hover:text-red-500 cursor-pointer`}
+                  onClick={() => toggleLike(index)}
+                ></i>
+                </div>
+          </div>
+        ))}
       </div>
     </div>
   );
