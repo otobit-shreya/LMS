@@ -59,23 +59,22 @@ const Login = () => {
     <div className="relative h-screen overflow-hidden">
       <img
         src="./assets/bg.jpg"
-        className="w-full object-cover"
+        className="w-full object-cover h-full lg:h-auto lg:object-center md:w-auto object-[-265px]"
         alt="Background"
       />
-      <div className="absolute top-0 left-0 p-8 bg-gradient-to-br from-gray via-transparent to-transparent">
-        <div className="text-white">
-          <h1 className="text-6xl font-extrabold mb-3 tracking-wider text-white relative">
-            Learner
-          </h1>
-
-          <p className="text-2xl tracking-wide font-bold bg-clip-text text-[#7f4649d9] typing-effect">
-            Learn, Grow, Succeed!
-          </p>
-        </div>
+       <div className="absolute top-0 left-0 right-0 p-4 md:p-8 flex justify-end lg:justify-start bg-gradient-to-br from-gray via-transparent to-transparent">
+      <div className="text-white text-right lg:text-left">
+        <h1 className="text-3xl md:text-5xl font-extrabold mb-2 tracking-wider text-white relative">
+          Learner
+        </h1>
+        <p className="text-[15px] md:tracking-wide font-bold bg-clip-text text-[#7f4649d9] typing-effect md:text-2xl">
+          Learn, Grow, Succeed!
+        </p>
       </div>
-      <div className="absolute right-0 top-0 bottom-0 flex items-center justify-center w-1/3 p-6">
-        <div className="bg-[#ffffffcc] p-8 rounded-xl shadow-lg max-w-sm w-full">
-          <h2 className="text-3xl text-gray-600 font-bold mb-4">
+    </div>
+      <div className="absolute right-0 top-0 bottom-0 flex items-center justify-center w-full lg:w-1/3 p-4 md:p-6">
+        <div className="bg-[#ffffffcc] p-6 md:p-8 rounded-xl shadow-lg max-w-xs mt-[5rem] md:mt-0 lg:min-w-sm md:min-w-[27rem] w-full">
+          <h2 className="text-2xl md:text-3xl text-gray-600 font-bold mb-4">
             Welcome Back!👋
           </h2>
           <Form noValidate validated={validated} onSubmit={handleSubmit}>
@@ -93,7 +92,7 @@ const Login = () => {
                 Please Enter A Valid Email.
               </Form.Control.Feedback>
             </Form.Group>
-
+  
             <Form.Group className="mb-3" controlId="formBasicPassword">
               <Form.Label>Password</Form.Label>
               <Form.Control
@@ -111,7 +110,7 @@ const Login = () => {
             <Button
               type="submit"
               style={{ backgroundColor: "#DD6A70", fontWeight: "600" }}
-              className="mt-3 mb-4 text-[25px] uppercase w-full border-0 shadow-md transition-all duration-300 ease-in-out transform hover:scale-105 hover:bg-[#F4A5A5] hover:shadow-lg"
+              className="mt-3 mb-4 text-lg md:text-[25px] uppercase w-full border-0 shadow-md transition-all duration-300 ease-in-out transform hover:scale-105 hover:bg-[#F4A5A5] hover:shadow-lg"
             >
               Submit
             </Button>
@@ -120,6 +119,12 @@ const Login = () => {
       </div>
     </div>
   );
+  
+  
+  
+  
+  
+  
 };
 
 export default Login;

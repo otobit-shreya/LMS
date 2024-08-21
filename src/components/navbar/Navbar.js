@@ -26,7 +26,7 @@ const NavigationBar = () => {
             style={{ maxHeight: "100px" }}
             navbarScroll
           >
-            <Nav.Link className="text-white font-bold">Home</Nav.Link>
+            <Nav.Link href="news" className="text-white font-bold">Home</Nav.Link>
           </Nav>
 
           <Dropdown align="end" className="d-flex align-items-center">

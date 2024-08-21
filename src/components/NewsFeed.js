@@ -28,7 +28,7 @@ const NewsFeed = () => {
 
   const deletePost = (index) => {
     setMessages((prevMessages) => prevMessages.filter((_, i) => i !== index));
-  };
+  };  
 
   const toggleLike = (index) => {
     setLikedMessages((prevLikes) => ({
@@ -269,7 +269,6 @@ const NewsFeed = () => {
               />
               <div className='font-["Poppins"]'>Admin</div>
               <div className="ml-auto flex items-center gap-x-2">
-                
                 <i
                   className="bi bi-trash3 hover:text-red-500 cursor-pointer"
                   onClick={() => deletePost(index)}
@@ -278,15 +277,15 @@ const NewsFeed = () => {
             </div>
             <p className='px-5  font-["Poppins"]'>{message}</p>
             <div className="px-5 pb-4">
-            <i
-                  className={`bi  ${
-                    likedMessages[index]
-                      ? "bi-heart-fill text-red-500"
-                      : "bi-heart"
-                  } hover:text-red-500 cursor-pointer`}
-                  onClick={() => toggleLike(index)}
-                ></i>
-                </div>
+              <i
+                className={`bi  ${
+                  likedMessages[index]
+                    ? "bi-heart-fill text-red-500"
+                    : "bi-heart"
+                } hover:text-red-500 cursor-pointer`}
+                onClick={() => toggleLike(index)}
+              ></i>
+            </div>
           </div>
         ))}
       </div>
