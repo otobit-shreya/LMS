@@ -119,6 +119,7 @@ const NewsFeed = () => {
             <label
               htmlFor="image"
               className='flex items-center gap-x-2 cursor-pointer text-base font-["Poppins"] text-center'
+              onClick={() => setIsDialogOpen(true)}
             >
               <i className="bi bi-image"></i>
 
