@@ -67,8 +67,8 @@ const Home = () => {
           </div>
         </Modal.Body>
       </Modal>
-      <div className="row m-0">
-        <div className="col-lg-4 col-md-4 bg-gray-100 shadow-md border-r-2 border-gray-200 h-screen">
+      <div className="row m-0 h-screen">
+        <div className="col-lg-4 col-md-4 bg-gray-100 shadow-md border-r-2 border-gray-200 h-auto">
           <h2 style={{ fontFamily: "auto" }} className="mt-20 mb-4">
             <i className="bi bi-book text-[26px]"></i>
             <span className="ml-2">Curriculum</span>
@@ -262,6 +262,7 @@ const Home = () => {
                   onChange={(eInfo, editor) => {setDesc(editor.data.get())}}
                 />
               </Form.Group>
+              <Button className="mb-4 px-5 py-2">Create</Button>
             </Form>
           </div>
         )}
